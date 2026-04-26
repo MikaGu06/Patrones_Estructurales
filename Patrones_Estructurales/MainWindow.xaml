@@ -1,0 +1,86 @@
+﻿<Window x:Class="Patrones_Estructurales.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Patrones_Estructurales"
+        mc:Ignorable="d"
+        Title="Patrones Estructurales"
+        Height="720"
+        Width="1280"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Style="{StaticResource SidebarStyle}">
+            <StackPanel>
+
+                <TextBlock Text="Patrones Estructurales"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Margin="0,10,0,5"/>
+
+                <TextBlock Text="Unidad 3"
+                           Foreground="{StaticResource TextoClaro}"
+                           Margin="0,0,0,15"/>
+
+                <Button x:Name="BtnAdapter"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Adapter"/>
+
+                <Button x:Name="BtnBridge"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Bridge"/>
+
+                <Button x:Name="BtnComposite"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Composite"/>
+
+                <Button x:Name="BtnDecorator"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Decorator"/>
+
+                <Button x:Name="BtnFacade"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Facade"/>
+
+                <Button x:Name="BtnFlyweight"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Flyweight"/>
+
+                <Button x:Name="BtnProxy"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Proxy"/>
+
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Style="{StaticResource ContentPanelStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Background="{StaticResource ColorPrimario}"
+                        CornerRadius="6"
+                        Padding="10"
+                        Margin="0,0,0,15">
+
+                    <TextBlock Text="Demostración"
+                               FontSize="26"
+                               FontWeight="SemiBold"
+                               Foreground="White"/>
+                </Border>
+
+                <ContentControl x:Name="ContenedorContenido"
+                                Grid.Row="1"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
