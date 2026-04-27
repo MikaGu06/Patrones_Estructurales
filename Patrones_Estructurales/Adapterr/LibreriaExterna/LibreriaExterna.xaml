@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Adapterr.LibreriaExterna.LibreriaExterna"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Patrones_Estructurales.Adapterr.LibreriaExterna"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- TÍTULO -->
+            <StackPanel Grid.Row="0" Margin="0,0,0,18">
+                <TextBlock Text="Integración de una librería externa"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource TextoOscuro}"/>
+
+                <TextBlock Text="Ejemplo del patrón Adapter aplicado a una librería externa de notificaciones."
+                       FontSize="15"
+                       Foreground="{StaticResource TextoClaro}"
+                       TextWrapping="Wrap"
+                       Margin="0,6,0,0"/>
+            </StackPanel>
+
+            <!-- ENTRADA -->
+            <Border Grid.Row="1"
+                Style="{StaticResource CardStyle}"
+                Margin="0,0,0,18">
+
+                <StackPanel>
+                    <TextBlock Text="Mensaje de la notificación"
+                           FontSize="15"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource TextoOscuro}"
+                           Margin="0,0,0,8"/>
+
+                    <TextBox x:Name="TxtMensaje"
+                         Height="38"
+                         Padding="10,7"
+                         FontSize="14"
+                         BorderBrush="{StaticResource BordesSuaves}"
+                         Background="{StaticResource Card}"/>
+
+                    <TextBlock Text="Tipo de notificación"
+                           FontSize="15"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource TextoOscuro}"
+                           Margin="0,16,0,8"/>
+
+                    <UniformGrid Columns="3">
+                        <Button x:Name="BtnExito"
+                            Content="Éxito"
+                            Style="{StaticResource MenuButtonStyle}"
+                            Margin="0,0,8,0"
+                            HorizontalContentAlignment="Center" Click="BtnExito_Click"/>
+
+                        <Button x:Name="BtnError"
+                            Content="Error"
+                            Style="{StaticResource MenuButtonStyle}"
+                            Margin="4,0,4,0"
+                            HorizontalContentAlignment="Center"  Click="BtnError_Click"/>
+
+                        <Button x:Name="BtnInfo"
+                            Content="Información"
+                            Style="{StaticResource MenuButtonStyle}"
+                            Margin="8,0,0,0"
+                            HorizontalContentAlignment="Center"  Click="BtnInfo_Click"/>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+
+            <!-- EXPLICACIÓN -->
+            <Border Grid.Row="2"
+                Style="{StaticResource CardStyle}">
+
+                <StackPanel>
+                    <TextBlock Text="Flujo del Adapter"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource TextoOscuro}"
+                           Margin="0,0,0,8"/>
+
+                    <Border Background="{StaticResource FondoLavanda}"
+                        CornerRadius="10"
+                        Padding="12"
+                        Margin="0,0,0,14">
+
+                        <TextBlock Text="WPF → INotificador → NotificadorAdapter → Librería externa"
+                               FontFamily="Consolas"
+                               FontSize="15"
+                               TextWrapping="Wrap"
+                               Foreground="{StaticResource TextoOscuro}"/>
+                    </Border>
+
+                    <TextBlock Text="Resultado"
+                           FontSize="15"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource TextoOscuro}"
+                           Margin="0,0,0,6"/>
+
+                    <TextBlock x:Name="TxtResultado"
+                           Text="Aún no se ha enviado ninguna notificación."
+                           FontSize="14"
+                           Foreground="{StaticResource TextoClaro}"
+                           TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

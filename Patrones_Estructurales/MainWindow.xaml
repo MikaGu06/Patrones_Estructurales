@@ -30,7 +30,7 @@
 
                 <Button x:Name="BtnAdapter"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Adapter"/>
+                        Content="Adapter" Click="BtnAdapter_Click"/>
 
                 <Button x:Name="BtnBridge"
                         Style="{StaticResource MenuButtonStyle}"

@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Patrones_Estructurales"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
         <!-- PALETA -->
         <SolidColorBrush x:Key="ColorPrimario" Color="#7F73A1"/>
         <SolidColorBrush x:Key="ColorPrimarioHover" Color="#262233"/>
@@ -55,22 +56,18 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="bd"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="5"
-                        Padding="{TemplateBinding Padding}">
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            Padding="{TemplateBinding Padding}">
                             <ContentPresenter VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="bd"
-                                Property="Background"
-                                Value="{StaticResource FondoLavanda}"></Setter>
+                                    Property="Background"
+                                    Value="White"></Setter>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="bd"
-                                Property="Opacity"
-                                Value="0.85"/>
-                            </Trigger>
+
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -84,10 +81,9 @@
 
         <!-- TARJETA SUAVE -->
         <Style x:Key="CardStyle" TargetType="Border">
-            <Setter Property="Background" Value="{StaticResource InputColor}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BordesSuaves}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ColorPrimario}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="18"/>
+            <Setter Property="CornerRadius" Value="7"/>
             <Setter Property="Padding" Value="20"/>
         </Style>
 

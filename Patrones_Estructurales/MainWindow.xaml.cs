@@ -20,5 +20,10 @@ namespace Patrones_Estructurales
         {
             InitializeComponent();
         }
+
+        private void BtnAdapter_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Adapterr.Adapter();
+        }
     }
 }
