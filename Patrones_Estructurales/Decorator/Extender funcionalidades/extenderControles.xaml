@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Decorator.ExtenderControles.ExtenderControles"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border Style="{StaticResource CardStyle}" Background="{StaticResource Card}">
+        <StackPanel>
+            <TextBlock Text="Extender funcionalidades de botones o TextBox"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextoOscuro}"
+                       Margin="0,0,0,10"/>
+
+            <TextBlock Text="El botón ejecuta una acción base. Los decoradores agregan registro de acción y conversión a mayúsculas."
+                       TextWrapping="Wrap"
+                       Foreground="{StaticResource TextoClaro}"
+                       Margin="0,0,0,20"/>
+
+            <TextBlock Text="Texto a procesar:"
+                       FontWeight="SemiBold"
+                       Margin="0,0,0,5"/>
+
+            <TextBox x:Name="TxtTexto"
+                     Height="35"
+                     Padding="8"
+                     Background="{StaticResource InputColor}"
+                     BorderBrush="{StaticResource BordesSuaves}"/>
+
+            <Button Content="Ejecutar acción decorada"
+                    Style="{StaticResource MenuButtonStyle}"
+                    Margin="0,15,0,15"
+                    Click="BtnEjecutar_Click"/>
+
+            <TextBlock x:Name="TxtResultado"
+                       TextWrapping="Wrap"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource ColorPrimario}"/>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Decorator.Validaciones.Validaciones"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border Style="{StaticResource CardStyle}" Background="{StaticResource Card}">
+        <StackPanel>
+            <TextBlock Text="Agregar validaciones dinámicas a controles"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextoOscuro}"
+                       Margin="0,0,0,10"/>
+
+            <TextBlock Text="El TextBox es la clase base. Los decoradores agregan validación de campo vacío y validación numérica."
+                       TextWrapping="Wrap"
+                       Foreground="{StaticResource TextoClaro}"
+                       Margin="0,0,0,20"/>
+
+            <TextBlock Text="Ingrese un valor:"
+                       FontWeight="SemiBold"
+                       Margin="0,0,0,5"/>
+
+            <TextBox x:Name="TxtValor"
+                     Height="35"
+                     Padding="8"
+                     Background="{StaticResource InputColor}"
+                     BorderBrush="{StaticResource BordesSuaves}"/>
+
+            <Button Content="Validar"
+                    Style="{StaticResource MenuButtonStyle}"
+                    Margin="0,15,0,15"
+                    Click="BtnValidar_Click"/>
+
+            <TextBlock x:Name="TxtResultado"
+                       TextWrapping="Wrap"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource ColorPrimario}"/>
+        </StackPanel>
+    </Border>
+</UserControl>

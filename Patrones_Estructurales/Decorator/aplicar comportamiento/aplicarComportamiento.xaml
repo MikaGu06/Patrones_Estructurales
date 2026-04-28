@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Decorator.ComportamientoAdicional.ComportamientoAdicional"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border Style="{StaticResource CardStyle}" Background="{StaticResource Card}">
+        <StackPanel>
+            <TextBlock Text="Aplicar comportamiento adicional sin modificar la clase base"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextoOscuro}"
+                       Margin="0,0,0,10"/>
+
+            <TextBlock Text="ProductoBase no se modifica. Los decoradores agregan impuesto y descuento al precio final."
+                       TextWrapping="Wrap"
+                       Foreground="{StaticResource TextoClaro}"
+                       Margin="0,0,0,20"/>
+
+            <TextBlock Text="Nombre del producto:"
+                       FontWeight="SemiBold"
+                       Margin="0,0,0,5"/>
+
+            <TextBox x:Name="TxtProducto"
+                     Height="35"
+                     Padding="8"
+                     Background="{StaticResource InputColor}"
+                     BorderBrush="{StaticResource BordesSuaves}"/>
+
+            <TextBlock Text="Precio base:"
+                       FontWeight="SemiBold"
+                       Margin="0,10,0,5"/>
+
+            <TextBox x:Name="TxtPrecio"
+                     Height="35"
+                     Padding="8"
+                     Background="{StaticResource InputColor}"
+                     BorderBrush="{StaticResource BordesSuaves}"/>
+
+            <Button Content="Calcular precio decorado"
+                    Style="{StaticResource MenuButtonStyle}"
+                    Margin="0,15,0,15"
+                    Click="BtnCalcular_Click"/>
+
+            <TextBlock x:Name="TxtResultado"
+                       TextWrapping="Wrap"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource ColorPrimario}"/>
+        </StackPanel>
+    </Border>
+</UserControl>
