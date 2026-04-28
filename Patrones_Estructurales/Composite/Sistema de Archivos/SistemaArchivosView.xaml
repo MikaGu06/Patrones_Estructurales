@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Composite.Sistema_de_Archivos.SistemaArchivosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Patrones_Estructurales.Composite.Sistema_de_Archivos"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0,0,0,18">
+                <TextBlock Text="Sistema de Archivos Dinámico (Composite)" 
+                           FontSize="24" FontWeight="SemiBold" 
+                           Foreground="{StaticResource TextoOscuro}"/>
+                <TextBlock Text="Añade archivos y carpetas dinámicamente para ver crecer el árbol." 
+                           FontSize="15" Foreground="{StaticResource TextoClaro}" 
+                           TextWrapping="Wrap" Margin="0,6,0,0"/>
+            </StackPanel>
+
+            <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,0,0,18">
+                <StackPanel>
+                    <TextBlock Text="Crear nuevo elemento" FontSize="16" FontWeight="SemiBold" 
+                               Foreground="{StaticResource TextoOscuro}" Margin="0,0,0,10"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                            <TextBlock Text="Nombre:" Foreground="{StaticResource TextoOscuro}" Margin="0,0,0,5"/>
+                            <TextBox x:Name="TxtNombreElemento" Height="30" Padding="5" Margin="0,0,0,10"
+                                     BorderBrush="{StaticResource BordesSuaves}" Background="{StaticResource Card}"/>
+
+                            <TextBlock Text="Tipo de elemento:" Foreground="{StaticResource TextoOscuro}" Margin="0,0,0,5"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                <RadioButton x:Name="RdbArchivo" Content="📄 Archivo" IsChecked="True" Margin="0,0,15,0"/>
+                                <RadioButton x:Name="RdbCarpeta" Content="📁 Carpeta"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBlock Text="Guardar dentro de:" Foreground="{StaticResource TextoOscuro}" Margin="0,0,0,5"/>
+                            <ComboBox x:Name="CmbCarpetasPadre" Height="30" Margin="0,0,0,15"
+                                      DisplayMemberPath="Nombre"/>
+
+                            <Button x:Name="BtnAgregar" Content="Añadir al Árbol" 
+                                    Style="{StaticResource MenuButtonStyle}" 
+                                    Click="BtnAgregar_Click"/>
+
+                            <Button x:Name="BtnLimpiar" Content="Limpiar Todo" 
+                                    Style="{StaticResource MenuButtonStyle}" 
+                                    Margin="5,0,0,0"
+                                    Background="#E74C3C" 
+                                    Click="BtnLimpiar_Click"/>
+                            
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <TextBlock Text="Estructura Actual" FontSize="18" FontWeight="SemiBold" 
+                               Foreground="{StaticResource TextoOscuro}" Margin="0,0,0,8"/>
+                    <Border Background="#F3F3F3" CornerRadius="5" Padding="15">
+                        <TextBlock x:Name="TxtResultado" FontFamily="Consolas" FontSize="14" 
+                                   Foreground="#333333"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
