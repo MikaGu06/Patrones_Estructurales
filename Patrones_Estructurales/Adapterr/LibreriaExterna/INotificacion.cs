@@ -6,6 +6,8 @@ namespace Patrones_Estructurales.Adapterr.LibreriaExterna
 {
     public interface INotificacion
     {
-        void Mostrar();
+        void MostrarExito(string mensaje);
+        void MostrarError(string mensaje);
+        void MostrarInfo(string mensaje);
     }
 }
