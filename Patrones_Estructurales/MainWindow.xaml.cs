@@ -21,30 +21,16 @@ namespace Patrones_Estructurales
             InitializeComponent();
         }
 
-        private void BtnAdapter_Click(object sender, RoutedEventArgs e)
+        private void BtnBridge_Click(object sender, RoutedEventArgs e)
         {
-            ContenedorContenido.Content = new Adapterr.Adapter();
-        }
-        
-
-        private void BtnComposite_Click(object sender, RoutedEventArgs e)
-        {
-            ContenedorContenido.Content = new Patrones_Estructurales.Composite.Composite();
+            var menuBridge = new Patrones_Estructurales.Bridge.MenuBridge();
+            ContenedorContenido.Content = menuBridge;
         }
 
-        private void BtnFlyweight_Click(object sender, RoutedEventArgs e)
+        private void BtnProxy_Click(object sender, RoutedEventArgs e)
         {
-            ContenedorContenido.Content = new Flyweight.Flyweight();
-        }
-
-        private void BtnDecorator_Click(object sender, RoutedEventArgs e)
-        {
-            ContenedorContenido.Content = new Decorator.Decorator();
-        }
-
-        private void BtnFacade_Click(object sender, RoutedEventArgs e)
-        {
-            ContenedorContenido.Content = new Facade.Facade();
+            var menuProxy = new Patrones_Estructurales.Proxy.MenuProxy();
+            ContenedorContenido.Content = menuProxy;
         }
     }
 }

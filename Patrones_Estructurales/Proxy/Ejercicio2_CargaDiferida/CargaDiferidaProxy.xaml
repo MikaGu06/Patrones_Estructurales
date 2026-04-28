@@ -1,0 +1,178 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Proxy.Ejercicio2_CargaDiferida.CargaDiferidaProxy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Patrones_Estructurales.Proxy.Ejercicio2_CargaDiferida">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <!-- Título -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    Padding="20"
+                    CornerRadius="12"
+                    Margin="15">
+                <TextBlock Text="Galeria de Gatos - Proxy Virtual (Carga Diferida)"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource FondoLavanda}"
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+            <!-- Explicación y botones -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="20"
+                    Margin="15">
+
+                <StackPanel>
+                    <TextBlock Text="PROXY VIRTUAL - CARGA DIFERIDA"
+                               Foreground="{StaticResource FondoLavanda}"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Foreground="{StaticResource FondoLavanda}"
+                               FontSize="12"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,15">
+                        Las imagenes NO se cargan al iniciar. Solo se cargan cuando haces clic en "Cargar Todo".
+                        Esto ahorra memoria y tiempo de carga inicial.
+                    </TextBlock>
+
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Button Background="{StaticResource ColorPrimario}"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Padding="20,12"
+                                Margin="5"
+                                Cursor="Hand"
+                                Click="BtnCargarTodo_Click">
+                            <TextBlock Text="Cargar Todos los Gatitos"/>
+                        </Button>
+
+                        <Button Background="{StaticResource ColorAlerta}"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Padding="20,12"
+                                Margin="5"
+                                Cursor="Hand"
+                                Click="BtnReset_Click">
+                            <TextBlock Text="Resetear (Limpiar)"/>
+                        </Button>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Lista de imágenes -->
+            <ItemsControl x:Name="ListaImagenes"
+                          ItemsSource="{Binding Imagenes}"
+                          HorizontalAlignment="Center"
+                          Margin="0,10,0,20">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"
+                                   HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{StaticResource ColorPrimario}"
+                                BorderBrush="{StaticResource PrimarioSuave}"
+                                BorderThickness="2"
+                                CornerRadius="12"
+                                Padding="15"
+                                Width="280"
+                                Margin="12"
+                                VerticalAlignment="Top">
+
+                            <StackPanel>
+                                <!-- Título Gato X -->
+                                <TextBlock Text="{Binding Nombre}"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource FondoLavanda}"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,5,0,5"/>
+
+                                <TextBlock Text="{Binding Tamaño}"
+                                           FontSize="11"
+                                           Foreground="{StaticResource FondoLavanda}"
+                                           Opacity="0.7"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,0,0,10"/>
+
+                                <!-- Área de la imagen -->
+                                <Border Background="{StaticResource ColorPrimarioHover}"
+                                        CornerRadius="8"
+                                        Width="250"
+                                        Height="200"
+                                        HorizontalAlignment="Center"
+                                        Margin="0,5,0,10">
+
+                                    <Grid>
+                                        <Image Source="{Binding Imagen}"
+                                               Width="250"
+                                               Height="200"
+                                               Stretch="UniformToFill"/>
+
+                                        <!-- Overlay mientras carga -->
+                                        <Border Background="Black"
+                                                Opacity="0.7"
+                                                CornerRadius="8"
+                                                Visibility="{Binding CargandoVisible}">
+                                            <TextBlock Text="Cargando gatito..."
+                                                       Foreground="White"
+                                                       FontWeight="Bold"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center"
+                                                       FontSize="12"/>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Estado -->
+                                <TextBlock Text="{Binding EstadoTexto}"
+                                           FontSize="11"
+                                           Foreground="{StaticResource FondoLavanda}"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,5,0,5"/>
+
+                                <TextBlock FontSize="10"
+                                           Foreground="{StaticResource FondoLavanda}"
+                                           Opacity="0.6"
+                                           HorizontalAlignment="Center">
+                                    <Run Text="Resolucion: "/>
+                                    <Run Text="{Binding Ancho, Mode=OneWay}"/>
+                                    <Run Text=" x "/>
+                                    <Run Text="{Binding Alto, Mode=OneWay}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Explicación del patrón -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="15"
+                    Margin="15,0,15,15">
+
+                <TextBlock Foreground="{StaticResource FondoLavanda}"
+                           FontSize="11"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap">
+                        Patron Proxy Virtual: El proxy actua como sustituto del objeto real.
+                        La imagen real solo se crea cuando se necesita (carga diferida).
+                        El proxy maneja la carga y muestra un placeholder mientras carga.
+                </TextBlock>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

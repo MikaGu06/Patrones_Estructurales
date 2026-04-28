@@ -30,31 +30,30 @@
 
                 <Button x:Name="BtnAdapter"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Adapter" Click="BtnAdapter_Click"/>
-
+                        Content="Adapter"/>
                 <Button x:Name="BtnBridge"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Bridge"/>
+                        Content="Bridge" Click="BtnBridge_Click"/>
 
                 <Button x:Name="BtnComposite"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Composite" Click="BtnComposite_Click"/>
+                        Content="Composite"/>
 
                 <Button x:Name="BtnDecorator"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Decorator" Click="BtnDecorator_Click"/>
+                        Content="Decorator"/>
 
                 <Button x:Name="BtnFacade"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Facade" Click="BtnFacade_Click"/>
+                        Content="Facade"/>
 
                 <Button x:Name="BtnFlyweight"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Flyweight" Click="BtnFlyweight_Click"/>
+                        Content="Flyweight"/>
 
                 <Button x:Name="BtnProxy"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Proxy"/>
+                        Content="Proxy" Click="BtnProxy_Click"/>
 
             </StackPanel>
         </Border>

@@ -1,0 +1,228 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Bridge.Ejercicio3_VisorFiguras.VisorFigurasBridge"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Patrones_Estructurales.Bridge.Ejercicio3_VisorFiguras">
+
+    <UserControl.Resources>
+        <!-- Plantilla para cada figura - TAMAÑO CORREGIDO -->
+        <DataTemplate x:Key="FiguraTemplate">
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="15"
+                    Padding="15"
+                    Width="250"
+                    MinHeight="320"
+                    Margin="12"
+                    VerticalAlignment="Top">
+
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="3" Opacity="0.3"/>
+                </Border.Effect>
+
+                <StackPanel>
+                    <!-- Icono (● ■ ▲) -->
+                    <TextBlock Text="{Binding Icono}"
+                               FontSize="48"
+                               Foreground="{StaticResource FondoLavanda}"
+                               HorizontalAlignment="Center"
+                               Margin="0,10,0,5"/>
+
+                    <!-- Tipo (Circulo, Rectangulo, Triangulo) -->
+                    <TextBlock Text="{Binding Tipo}"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource FondoLavanda}"
+                               HorizontalAlignment="Center"
+                               Margin="0,10,0,15"/>
+
+                    <!-- Figura renderizada - TAMAÑO AJUSTADO -->
+                    <Border Background="{StaticResource ColorPrimarioHover}"
+                            CornerRadius="10"
+                            Padding="10"
+                            Margin="0,5,0,10"
+                            HorizontalAlignment="Center">
+                        <ContentControl Content="{Binding FiguraRenderizada}"
+                                        Width="140"
+                                        Height="140"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+        <StackPanel>
+            <!-- Título -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    Padding="20"
+                    CornerRadius="12"
+                    Margin="15">
+                <TextBlock Text="Visor de Figuras Geometricas - Patron Bridge"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource FondoLavanda}"
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+            <!-- Selector de renderizado -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="20"
+                    Margin="15">
+
+                <StackPanel>
+                    <TextBlock Text="SELECCIONA EL MOTOR DE RENDERIZADO (Bridge en accion)"
+                               Foreground="{StaticResource FondoLavanda}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Margin="0,0,0,15"
+                               HorizontalAlignment="Center"/>
+
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Button Background="{StaticResource TextoOscuro}"
+                                Foreground="{StaticResource FondoLavanda}"
+                                FontWeight="Bold"
+                                FontSize="13"
+                                Padding="20,10"
+                                Margin="8"
+                                Cursor="Hand"
+                                Click="BtnRenderSuave_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource ColorPrimarioHover}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="RENDER SUAVE" FontWeight="Bold"/>
+                                <TextBlock Text="Sombras + Bordes redondeados" FontSize="9" Opacity="0.8"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Background="{StaticResource TextoClaro}"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                FontSize="13"
+                                Padding="20,10"
+                                Margin="8"
+                                Cursor="Hand"
+                                Click="BtnRenderPixelado_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource ColorPrimario}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="RENDER PIXELADO" FontWeight="Bold"/>
+                                <TextBlock Text="Estilo retro 8-bits" FontSize="9" Opacity="0.8"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Background="Black"
+                                Foreground="{StaticResource FondoLavanda}"
+                                FontWeight="Bold"
+                                FontSize="13"
+                                Padding="20,10"
+                                Margin="8"
+                                Cursor="Hand"
+                                Click="BtnRenderAltoContraste_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource ColorPrimarioHover}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="ALTO CONTRASTE" FontWeight="Bold"/>
+                                <TextBlock Text="Blanco/Negro + Accesibilidad" FontSize="9" Opacity="0.8"/>
+                            </StackPanel>
+                        </Button>
+                    </WrapPanel>
+
+                    <Border Background="{StaticResource ColorPrimarioHover}"
+                            CornerRadius="8"
+                            Padding="15"
+                            Margin="0,15,0,0">
+                        <TextBlock Foreground="{StaticResource FondoLavanda}"
+                                   FontSize="12"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="{Binding RenderizadorActual.Descripcion}"
+                                   Opacity="0.9"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Lista de figuras -->
+            <ItemsControl x:Name="ListaFiguras"
+                          ItemsSource="{Binding Figuras}"
+                          HorizontalAlignment="Center"
+                          Margin="0,10,0,20">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <StaticResource ResourceKey="FiguraTemplate"/>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Explicación del patrón -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="15"
+                    Margin="15,0,15,15">
+
+                <TextBlock Foreground="{StaticResource FondoLavanda}"
+                           FontSize="11"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Opacity="0.9">
+                        Patron Bridge: Las figuras NO saben como se renderizan.
+                        Cada motor de renderizado implementa su propia logica de dibujo.
+                        Cambia el motor y mira como se transforman TODAS las figuras!
+                </TextBlock>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

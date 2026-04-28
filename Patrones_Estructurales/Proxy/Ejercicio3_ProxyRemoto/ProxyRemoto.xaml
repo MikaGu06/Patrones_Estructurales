@@ -1,0 +1,212 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Proxy.Ejercicio3_ProxyRemoto.ProxyRemoto"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Patrones_Estructurales.Proxy.Ejercicio3_ProxyRemoto">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <!-- Titulo -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    Padding="20"
+                    CornerRadius="12"
+                    Margin="15">
+                <TextBlock Text="Proxy Remoto - APIs Reales (Bolivia)"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource FondoLavanda}"
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+            <!-- Explicacion -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="20"
+                    Margin="15">
+
+                <StackPanel>
+                    <TextBlock Text="PROXY REMOTO CON CACHE - DATOS REALES"
+                               Foreground="{StaticResource FondoLavanda}"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Foreground="{StaticResource FondoLavanda}"
+                               FontSize="12"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,15">
+                        Datos obtenidos de APIs reales (wttr.in y ExchangeRate-API).
+                        El proxy guarda en cache por 30 segundos para evitar llamadas repetidas.
+                        Las respuestas en [CACHE] son instantaneas.
+                    </TextBlock>
+
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Button Background="{StaticResource ColorAlerta}"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Padding="15,10"
+                                Margin="5"
+                                Cursor="Hand"
+                                Click="BtnLimpiarCache_Click">
+                            <TextBlock Text="Limpiar Cache"/>
+                        </Button>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Estado de conexion -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="15"
+                    Margin="15">
+                <StackPanel>
+                    <TextBlock Text="ESTADO DEL PROXY"
+                               Foreground="{StaticResource FondoLavanda}"
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"/>
+                    <TextBlock Text="{Binding EstadoConexion}"
+                               Foreground="{StaticResource FondoLavanda}"
+                               FontSize="12"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Clima -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="15"
+                    Margin="15">
+
+                <StackPanel>
+                    <TextBlock Text="CONSULTAR CLIMA"
+                               Foreground="{StaticResource FondoLavanda}"
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Ejemplos: La Paz, Santa Cruz, Cochabamba, Sucre, Potosi"
+                               Foreground="{StaticResource FondoLavanda}"
+                               FontSize="10"
+                               Opacity="0.7"
+                               Margin="0,0,0,5"/>
+
+                    <Grid Margin="0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox x:Name="TxtCiudad"
+                                 Grid.Column="0"
+                                 Text="La Paz"
+                                 Background="{StaticResource ColorPrimarioHover}"
+                                 Foreground="{StaticResource FondoLavanda}"
+                                 BorderBrush="{StaticResource PrimarioSuave}"
+                                 Padding="10"
+                                 Margin="0,0,10,0"/>
+
+                        <Button Grid.Column="1"
+                                Background="{StaticResource ColorPrimario}"
+                                Foreground="White"
+                                Padding="20,10"
+                                Cursor="Hand"
+                                Click="BtnObtenerClima_Click">
+                            <TextBlock Text="Consultar"/>
+                        </Button>
+                    </Grid>
+
+                    <Border Background="{StaticResource ColorPrimarioHover}"
+                            CornerRadius="8"
+                            Padding="15"
+                            Margin="0,10,0,0">
+                        <TextBlock x:Name="TxtResultadoClima"
+                                   Foreground="{StaticResource FondoLavanda}"
+                                   TextWrapping="Wrap"
+                                   FontSize="13"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Cotizaciones de Monedas -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="15"
+                    Margin="15">
+
+                <StackPanel>
+                    <TextBlock Text="COTIZACIONES DOLAR"
+                               Foreground="{StaticResource FondoLavanda}"
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"/>
+
+                    <Button Background="{StaticResource ColorPrimario}"
+                            Foreground="White"
+                            Padding="20,10"
+                            Cursor="Hand"
+                            Click="BtnObtenerCotizaciones_Click">
+                        <TextBlock Text="Actualizar Cotizaciones"/>
+                    </Button>
+
+                    <Border Background="{StaticResource ColorPrimarioHover}"
+                            CornerRadius="8"
+                            Padding="15"
+                            Margin="0,10,0,0">
+                        <StackPanel>
+                            <TextBlock x:Name="TxtCotizacionBOB"
+                                       Foreground="{StaticResource FondoLavanda}"
+                                       FontSize="13"
+                                       Margin="0,3"/>
+                            <TextBlock x:Name="TxtCotizacionARS"
+                                       Foreground="{StaticResource FondoLavanda}"
+                                       FontSize="13"
+                                       Margin="0,3"/>
+                            <TextBlock x:Name="TxtCotizacionCLP"
+                                       Foreground="{StaticResource FondoLavanda}"
+                                       FontSize="13"
+                                       Margin="0,3"/>
+                            <TextBlock x:Name="TxtCotizacionPEN"
+                                       Foreground="{StaticResource FondoLavanda}"
+                                       FontSize="13"
+                                       Margin="0,3"/>
+                            <TextBlock x:Name="TxtCotizacionBRL"
+                                       Foreground="{StaticResource FondoLavanda}"
+                                       FontSize="13"
+                                       Margin="0,3"/>
+                            <TextBlock x:Name="TxtCotizacionEUR"
+                                       Foreground="{StaticResource FondoLavanda}"
+                                       FontSize="13"
+                                       Margin="0,3"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Explicacion -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="15"
+                    Margin="15,0,15,15">
+
+                <TextBlock Foreground="{StaticResource FondoLavanda}"
+                           FontSize="11"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap">
+                        Patron Proxy Remoto con APIs Reales:
+                        Clima: wttr.in (datos meteorologicos reales)
+                        Monedas: ExchangeRate-API (cotizaciones actualizadas)
+                        El cache guarda resultados por 30 segundos
+                        Las consultas repetidas son instantaneas [CACHE]
+                </TextBlock>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
