@@ -38,7 +38,7 @@
 
                 <Button x:Name="BtnComposite"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Composite"/>
+                        Content="Composite" Click="BtnComposite_Click"/>
 
                 <Button x:Name="BtnDecorator"
                         Style="{StaticResource MenuButtonStyle}"
@@ -50,7 +50,7 @@
 
                 <Button x:Name="BtnFlyweight"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Flyweight"/>
+                        Content="Flyweight" Click="BtnFlyweight_Click"/>
 
                 <Button x:Name="BtnProxy"
                         Style="{StaticResource MenuButtonStyle}"

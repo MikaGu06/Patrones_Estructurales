@@ -25,6 +25,17 @@ namespace Patrones_Estructurales
         {
             ContenedorContenido.Content = new Adapterr.Adapter();
         }
+        
+
+        private void BtnComposite_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Patrones_Estructurales.Composite.Composite();
+        }
+
+        private void BtnFlyweight_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Flyweight.Flyweight();
+        }
 
         private void BtnDecorator_Click(object sender, RoutedEventArgs e)
         {
