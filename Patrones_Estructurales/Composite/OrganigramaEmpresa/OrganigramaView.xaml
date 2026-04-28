@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Composite.OrganigramaEmpresa.OrganigramaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Patrones_Estructurales.Composite.OrganigramaEmpresa"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0,0,0,18">
+                <TextBlock Text="Organigrama Empresarial (Composite)" FontSize="24" FontWeight="SemiBold" Foreground="{StaticResource TextoOscuro}"/>
+                <TextBlock Text="Gestiona jerarquías de mando y calcula costos totales de nómina de forma recursiva." FontSize="15" Foreground="{StaticResource TextoClaro}" TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,0,0,18">
+                <StackPanel>
+                    <UniformGrid Columns="2">
+                        <StackPanel Margin="0,0,10,0">
+                            <TextBlock Text="Nombre:" Foreground="{StaticResource TextoOscuro}" Margin="0,0,0,5"/>
+                            <TextBox x:Name="TxtNombre" Height="30" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Puesto:" Foreground="{StaticResource TextoOscuro}" Margin="0,0,0,5"/>
+                            <TextBox x:Name="TxtPuesto" Height="30" Margin="0,0,0,10"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,0">
+                            <TextBlock Text="Salario Base ($):" Foreground="{StaticResource TextoOscuro}" Margin="0,0,0,5"/>
+                            <TextBox x:Name="TxtSalario" Height="30" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Superior Directo:" Foreground="{StaticResource TextoOscuro}" Margin="0,0,0,5"/>
+                            <ComboBox x:Name="CmbJefes" Height="30" DisplayMemberPath="Nombre" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </UniformGrid>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <CheckBox x:Name="ChkEsJefe" Content="Es un cargo con subordinados (Jefe)" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                        <Button x:Name="BtnContratar" Content="Contratar / Asignar" Style="{StaticResource MenuButtonStyle}" Width="150" Click="BtnContratar_Click"/>
+                        <Button x:Name="BtnLimpiar" 
+                                Content="Despedir a Todos" 
+                                Style="{StaticResource MenuButtonStyle}" 
+                                Margin="5,0,0,0"
+                                Background="#E74C3C" 
+                                Click="BtnLimpiar_Click"/>
+
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <TextBlock x:Name="TxtCostoTotal" Text="Costo Total Nómina: $0.00" FontSize="18" FontWeight="Bold" Foreground="{StaticResource ColorPrimario}" Margin="0,0,0,10"/>
+                    <Border Background="#F9F9F9" CornerRadius="5" Padding="15">
+                        <TextBlock x:Name="TxtOrganigrama" FontFamily="Consolas" FontSize="14" Text="No hay empleados registrados."/>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
