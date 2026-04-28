@@ -25,5 +25,10 @@ namespace Patrones_Estructurales
         {
             ContenedorContenido.Content = new Adapterr.Adapter();
         }
+
+        private void BtnDecorator_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Decorator.Decorator();
+        }
     }
 }

@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Decorator.Decorator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Patrones_Estructurales.Decorator"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Background="#111827">
+
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="PATRÓN DECORATOR"
+                   Foreground="White"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" Margin="0,10,0,20">
+            <TextBlock Text="Seleccione un ejemplo:"
+                       Foreground="White"
+                       FontSize="16"
+                       Margin="0,0,0,8"/>
+
+            <ComboBox x:Name="cmbEjemplos"
+                      Height="35"
+                      FontSize="15"
+                      SelectionChanged="cmbEjemplos_SelectionChanged">
+                <ComboBoxItem Content="Agregar validaciones dinámicas a controles"/>
+                <ComboBoxItem Content="Extender funcionalidades de botones o textbox"/>
+                <ComboBoxItem Content="Aplicar comportamiento adicional sin modificar la clase base"/>
+            </ComboBox>
+        </StackPanel>
+
+        <Border Grid.Row="2"
+                Background="#1F2937"
+                CornerRadius="15"
+                Padding="25">
+
+            <StackPanel>
+                <TextBlock x:Name="txtTitulo"
+                           Foreground="White"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Margin="0,0,0,10"/>
+
+                <TextBlock x:Name="txtDescripcion"
+                           Foreground="#D1D5DB"
+                           FontSize="15"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,20"/>
+
+                <TextBox x:Name="txtEntrada"
+                         Height="35"
+                         FontSize="15"
+                         Margin="0,0,0,15"
+                         Padding="8"/>
+
+                <Button x:Name="btnEjecutar"
+                        Content="Ejecutar Decorator"
+                        Height="40"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        Click="btnEjecutar_Click"
+                        Margin="0,0,0,20"/>
+
+                <TextBlock Text="Resultado:"
+                           Foreground="White"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Margin="0,0,0,8"/>
+
+                <TextBlock x:Name="txtResultado"
+                           Foreground="#A7F3D0"
+                           FontSize="16"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

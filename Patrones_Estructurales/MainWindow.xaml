@@ -42,7 +42,7 @@
 
                 <Button x:Name="BtnDecorator"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Decorator"/>
+                        Content="Decorator" Click="BtnDecorator_Click"/>
 
                 <Button x:Name="BtnFacade"
                         Style="{StaticResource MenuButtonStyle}"
