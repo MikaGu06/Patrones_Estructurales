@@ -10,22 +10,29 @@
                        Foreground="{StaticResource TextoOscuro}"
                        Margin="0,0,0,10"/>
 
-            <TextBlock Text="El botón ejecuta una acción base. Los decoradores agregan registro de acción y conversión a mayúsculas."
-                       TextWrapping="Wrap"
-                       Foreground="{StaticResource TextoClaro}"
-                       Margin="0,0,0,20"/>
-
             <TextBlock Text="Texto a procesar:"
-                       FontWeight="SemiBold"
-                       Margin="0,0,0,5"/>
+                       FontWeight="SemiBold"/>
 
             <TextBox x:Name="TxtTexto"
                      Height="35"
                      Padding="8"
+                     Margin="0,5,0,15"
                      Background="{StaticResource InputColor}"
                      BorderBrush="{StaticResource BordesSuaves}"/>
 
-            <Button Content="Ejecutar acción decorada"
+            <CheckBox x:Name="ChkRegistro"
+                      Content="Agregar registro de acción"
+                      Margin="0,5"/>
+
+            <CheckBox x:Name="ChkMayuscula"
+                      Content="Convertir a mayúsculas"
+                      Margin="0,5"/>
+
+            <CheckBox x:Name="ChkFecha"
+                      Content="Agregar fecha y hora"
+                      Margin="0,5"/>
+
+            <Button Content="Ejecutar acción"
                     Style="{StaticResource MenuButtonStyle}"
                     Margin="0,15,0,15"
                     Click="BtnEjecutar_Click"/>

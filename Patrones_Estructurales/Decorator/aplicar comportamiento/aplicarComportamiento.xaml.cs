@@ -13,6 +13,12 @@ namespace Patrones_Estructurales.Decorator.ComportamientoAdicional
 
         private void BtnCalcular_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(TxtProducto.Text))
+            {
+                TxtResultado.Text = "Error: ingrese el nombre del producto.";
+                return;
+            }
+
             if (!decimal.TryParse(TxtPrecio.Text, out decimal precio))
             {
                 TxtResultado.Text = "Error: ingrese un precio válido.";
@@ -20,12 +26,32 @@ namespace Patrones_Estructurales.Decorator.ComportamientoAdicional
             }
 
             IProducto producto = new ProductoBase(TxtProducto.Text, precio);
-            producto = new ImpuestoDecorator(producto);
-            producto = new DescuentoDecorator(producto);
+
+            if (ChkImpuesto.IsChecked == true)
+            {
+                if (!decimal.TryParse(TxtImpuesto.Text, out decimal impuesto))
+                {
+                    TxtResultado.Text = "Error: ingrese un impuesto válido.";
+                    return;
+                }
+
+                producto = new ImpuestoDecorator(producto, impuesto);
+            }
+
+            if (ChkDescuento.IsChecked == true)
+            {
+                if (!decimal.TryParse(TxtDescuento.Text, out decimal descuento))
+                {
+                    TxtResultado.Text = "Error: ingrese un descuento válido.";
+                    return;
+                }
+
+                producto = new DescuentoDecorator(producto, descuento);
+            }
 
             TxtResultado.Text =
                 "Producto: " + producto.ObtenerNombre() +
-                "\nPrecio final: " + producto.ObtenerPrecio() + " Bs";
+                "\nPrecio final: " + producto.ObtenerPrecio().ToString("0.00") + " Bs";
         }
     }
 
@@ -79,21 +105,31 @@ namespace Patrones_Estructurales.Decorator.ComportamientoAdicional
 
     public class ImpuestoDecorator : ProductoDecorator
     {
-        public ImpuestoDecorator(IProducto producto) : base(producto) { }
+        private readonly decimal porcentaje;
+
+        public ImpuestoDecorator(IProducto producto, decimal porcentaje) : base(producto)
+        {
+            this.porcentaje = porcentaje;
+        }
 
         public override decimal ObtenerPrecio()
         {
-            return base.ObtenerPrecio() * 1.13m;
+            return base.ObtenerPrecio() + (base.ObtenerPrecio() * porcentaje / 100);
         }
     }
 
     public class DescuentoDecorator : ProductoDecorator
     {
-        public DescuentoDecorator(IProducto producto) : base(producto) { }
+        private readonly decimal descuento;
+
+        public DescuentoDecorator(IProducto producto, decimal descuento) : base(producto)
+        {
+            this.descuento = descuento;
+        }
 
         public override decimal ObtenerPrecio()
         {
-            return base.ObtenerPrecio() - 10;
+            return base.ObtenerPrecio() - descuento;
         }
     }
 }

@@ -46,7 +46,7 @@
 
                 <Button x:Name="BtnFacade"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Facade"/>
+                        Content="Facade" Click="BtnFacade_Click"/>
 
                 <Button x:Name="BtnFlyweight"
                         Style="{StaticResource MenuButtonStyle}"

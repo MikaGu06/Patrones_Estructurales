@@ -10,26 +10,54 @@
                        Foreground="{StaticResource TextoOscuro}"
                        Margin="0,0,0,10"/>
 
-            <TextBlock Text="ProductoBase no se modifica. Los decoradores agregan impuesto y descuento al precio final."
-                       TextWrapping="Wrap"
-                       Foreground="{StaticResource TextoClaro}"
-                       Margin="0,0,0,20"/>
-
             <TextBlock Text="Nombre del producto:"
-                       FontWeight="SemiBold"
-                       Margin="0,0,0,5"/>
+                       FontWeight="SemiBold"/>
 
             <TextBox x:Name="TxtProducto"
+                     Height="35"
+                     Padding="8"
+                     Margin="0,5,0,10"
+                     Background="{StaticResource InputColor}"
+                     BorderBrush="{StaticResource BordesSuaves}"/>
+
+            <TextBlock Text="Precio base:"
+                       FontWeight="SemiBold"/>
+
+            <TextBox x:Name="TxtPrecio"
+                     Text="100"
+                     Height="35"
+                     Padding="8"
+                     Margin="0,5,0,15"
+                     Background="{StaticResource InputColor}"
+                     BorderBrush="{StaticResource BordesSuaves}"/>
+
+            <CheckBox x:Name="ChkImpuesto"
+                      Content="Aplicar impuesto"
+                      IsChecked="True"
+                      Margin="0,5"/>
+
+            <TextBlock Text="Impuesto (%):"
+                       Margin="0,5,0,5"
+                       FontWeight="SemiBold"/>
+
+            <TextBox x:Name="TxtImpuesto"
+                     Text="13"
                      Height="35"
                      Padding="8"
                      Background="{StaticResource InputColor}"
                      BorderBrush="{StaticResource BordesSuaves}"/>
 
-            <TextBlock Text="Precio base:"
-                       FontWeight="SemiBold"
-                       Margin="0,10,0,5"/>
+            <CheckBox x:Name="ChkDescuento"
+                      Content="Aplicar descuento"
+                      IsChecked="True"
+                      Margin="0,15,0,5"/>
 
-            <TextBox x:Name="TxtPrecio"
+            <TextBlock Text="Descuento (Bs):"
+                       Margin="0,5,0,5"
+                       FontWeight="SemiBold"/>
+
+            <TextBox x:Name="TxtDescuento"
+                     Text="10"
                      Height="35"
                      Padding="8"
                      Background="{StaticResource InputColor}"

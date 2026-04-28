@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Patrones_Estructurales.Decorator.ExtenderControles
@@ -13,8 +14,15 @@ namespace Patrones_Estructurales.Decorator.ExtenderControles
         private void BtnEjecutar_Click(object sender, RoutedEventArgs e)
         {
             IAccion accion = new BotonBase(TxtTexto.Text);
-            accion = new RegistroDecorator(accion);
-            accion = new MayusculaDecorator(accion);
+
+            if (ChkRegistro.IsChecked == true)
+                accion = new RegistroDecorator(accion);
+
+            if (ChkMayuscula.IsChecked == true)
+                accion = new MayusculaDecorator(accion);
+
+            if (ChkFecha.IsChecked == true)
+                accion = new FechaDecorator(accion);
 
             TxtResultado.Text = accion.Ejecutar();
         }
@@ -72,6 +80,16 @@ namespace Patrones_Estructurales.Decorator.ExtenderControles
         public override string Ejecutar()
         {
             return base.Ejecutar().ToUpper();
+        }
+    }
+
+    public class FechaDecorator : AccionDecorator
+    {
+        public FechaDecorator(IAccion accion) : base(accion) { }
+
+        public override string Ejecutar()
+        {
+            return base.Ejecutar() + "\nFecha y hora: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
     }
 }

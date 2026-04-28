@@ -16,8 +16,23 @@ namespace Patrones_Estructurales.Decorator.Validaciones
             try
             {
                 IEntrada entrada = new EntradaBase(TxtValor.Text);
-                entrada = new ValidacionVacioDecorator(entrada);
-                entrada = new ValidacionNumericaDecorator(entrada);
+
+                if (ChkVacio.IsChecked == true)
+                    entrada = new ValidacionVacioDecorator(entrada);
+
+                if (ChkNumerico.IsChecked == true)
+                    entrada = new ValidacionNumericaDecorator(entrada);
+
+                if (ChkLongitud.IsChecked == true)
+                {
+                    if (!int.TryParse(TxtLongitud.Text, out int longitud))
+                    {
+                        TxtResultado.Text = "Error: ingrese una longitud válida.";
+                        return;
+                    }
+
+                    entrada = new ValidacionLongitudDecorator(entrada, longitud);
+                }
 
                 TxtResultado.Text = entrada.ObtenerValor();
             }
@@ -88,6 +103,26 @@ namespace Patrones_Estructurales.Decorator.Validaciones
 
             if (!int.TryParse(valor, out _))
                 throw new Exception("Error: el campo solo acepta números.");
+
+            return valor;
+        }
+    }
+
+    public class ValidacionLongitudDecorator : EntradaDecorator
+    {
+        private readonly int longitudMinima;
+
+        public ValidacionLongitudDecorator(IEntrada entrada, int longitudMinima) : base(entrada)
+        {
+            this.longitudMinima = longitudMinima;
+        }
+
+        public override string ObtenerValor()
+        {
+            string valor = base.ObtenerValor();
+
+            if (valor.Length < longitudMinima)
+                throw new Exception("Error: el campo debe tener mínimo " + longitudMinima + " caracteres.");
 
             return "Valor válido: " + valor;
         }

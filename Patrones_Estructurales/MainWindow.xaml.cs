@@ -30,5 +30,10 @@ namespace Patrones_Estructurales
         {
             ContenedorContenido.Content = new Decorator.Decorator();
         }
+
+        private void BtnFacade_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new FACADE.FACADE();
+        }
     }
 }
