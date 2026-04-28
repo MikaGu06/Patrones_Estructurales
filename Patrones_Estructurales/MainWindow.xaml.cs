@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Patrones_Estructurales.Proxy;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -31,6 +32,36 @@ namespace Patrones_Estructurales
         {
             var menuProxy = new Patrones_Estructurales.Proxy.MenuProxy();
             ContenedorContenido.Content = menuProxy;
+        }
+
+        private void BtnFacade_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Facade.Facade();
+        }
+
+        private void BtnAdapter_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Adapterr.Adapter();
+        }
+
+        private void BtnComposite_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Composite.Composite();
+        }
+
+        private void BtnDecorator_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Decorator.Decorator();
+        }
+
+        private void BtnFacade_Click_1(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Facade.Facade();
+        }
+
+        private void BtnFlyweight_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorContenido.Content = new Flyweight.Flyweight();
         }
     }
 }
