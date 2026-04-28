@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patrones_Estructurales.Adapterr.LibreriaExterna
+﻿namespace Patrones_Estructurales.Adapterr.LibreriaExterna
 {
     public class AdaptadorNotificacion : INotificacion
     {
-        private LibreriaNotificaciones NotificacionExterna;
+        private LibreriaNotificacionesReal notificador = new LibreriaNotificacionesReal();
 
-        public AdaptadorNotificacion(string mensaje, string tipo)
+        public void MostrarExito(string mensaje)
         {
-            NotificacionExterna = new LibreriaNotificaciones(mensaje, tipo);
+            notificador.MostrarSuccess(mensaje);
         }
 
-        public void Mostrar()
+        public void MostrarError(string mensaje)
         {
-            NotificacionExterna.MostrarNotificacionExterna();
+            notificador.MostrarError(mensaje);
+        }
+
+        public void MostrarInfo(string mensaje)
+        {
+            notificador.MostrarInfo(mensaje);
         }
     }
 }

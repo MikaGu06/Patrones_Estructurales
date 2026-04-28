@@ -18,33 +18,30 @@ namespace Patrones_Estructurales.Adapterr.LibreriaExterna
     /// </summary>
     public partial class LibreriaExterna : UserControl
     {
+        private INotificacion notificador;
+
         public LibreriaExterna()
         {
             InitializeComponent();
+            notificador = new AdaptadorNotificacion();
         }
 
         private void BtnExito_Click(object sender, RoutedEventArgs e)
         {
-            INotificacion notificacion = new AdaptadorNotificacion(TxtMensaje.Text, "Éxito");
-            notificacion.Mostrar();
-
-            TxtResultado.Text = "WPF usó INotificacion.Mostrar(), y el Adapter llamó a MostrarNotificacionExterna().";
+            notificador.MostrarExito(TxtMensaje.Text);
+            TxtResultado.Text = "Adapter llamó a ShowSuccess de la librería externa.";
         }
 
         private void BtnError_Click(object sender, RoutedEventArgs e)
         {
-            INotificacion notificacion = new AdaptadorNotificacion(TxtMensaje.Text, "Error");
-            notificacion.Mostrar();
-
-            TxtResultado.Text = "WPF usó INotificacion.Mostrar(), y el Adapter llamó a MostrarNotificacionExterna().";
+            notificador.MostrarError(TxtMensaje.Text);
+            TxtResultado.Text = "Adapter llamó a ShowError de la librería externa.";
         }
 
         private void BtnInfo_Click(object sender, RoutedEventArgs e)
         {
-            INotificacion notificacion = new AdaptadorNotificacion(TxtMensaje.Text, "Información");
-            notificacion.Mostrar();
-
-            TxtResultado.Text = "WPF usó INotificacion.Mostrar(), y el Adapter llamó a MostrarNotificacionExterna().";
+            notificador.MostrarInfo(TxtMensaje.Text);
+            TxtResultado.Text = "Adapter llamó a ShowInformation de la librería externa.";
         }
     }
 }
