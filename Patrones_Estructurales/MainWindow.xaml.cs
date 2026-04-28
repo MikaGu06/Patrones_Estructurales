@@ -33,7 +33,7 @@ namespace Patrones_Estructurales
 
         private void BtnFacade_Click(object sender, RoutedEventArgs e)
         {
-            ContenedorContenido.Content = new FACADE.FACADE();
+            ContenedorContenido.Content = new Facade.Facade();
         }
     }
 }

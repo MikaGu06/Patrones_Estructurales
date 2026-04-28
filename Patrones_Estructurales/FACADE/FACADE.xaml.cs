@@ -1,26 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Patrones_Estructurales.Facade.GestorCentral;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Patrones_Estructurales.FACADE
+namespace Patrones_Estructurales.Facade
 {
-    /// <summary>
-    /// Lógica de interacción para FACADE.xaml
-    /// </summary>
-    public partial class FACADE : UserControl
+    public partial class Facade : UserControl
     {
-        public FACADE()
+        public Facade()
         {
             InitializeComponent();
+            ContenedorFacade.Content = new AccesoServicios.AccesoServicios();
+        }
+
+        private void BtnAcceso_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorFacade.Content = new AccesoServicios.AccesoServicios();
+        }
+
+        private void BtnMultiples_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorFacade.Content = new MultiplesServicios.MultiplesServicios();
+        }
+
+        private void BtnGestor_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorFacade.Content = new GestorCentral.GestorCentral();
         }
     }
 }
