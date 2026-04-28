@@ -27,5 +27,15 @@ namespace Patrones_Estructurales.Adapterr
         {
             ContenedorAdapter.Content = new LibreriaExterna.LibreriaExterna();
         }
+
+        private void BtnFormato_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorAdapter.Content = new FormatoJsonXML.FormatoJsonXML();
+        }
+
+        private void BtnViewModels_Click(object sender, RoutedEventArgs e)
+        {
+            ContenedorAdapter.Content = new ViewModels.ViewModels();
+        }
     }
 }

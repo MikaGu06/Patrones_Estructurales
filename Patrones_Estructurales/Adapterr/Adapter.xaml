@@ -27,12 +27,12 @@
             <Button x:Name="BtnFormato"
                     Content="Formato JSON y XML"
                     Style="{StaticResource MenuButtonStyle}"
-                    Margin="5"/>
+                    Margin="5" Click="BtnFormato_Click"/>
 
             <Button x:Name="BtnViewModels"
                     Content="ViewModels"
                     Style="{StaticResource MenuButtonStyle}"
-                    Margin="5"/>
+                    Margin="5" Click="BtnViewModels_Click"/>
 
         </UniformGrid>
 
