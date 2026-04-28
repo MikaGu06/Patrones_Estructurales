@@ -1,0 +1,218 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Bridge.Ejercicio1_Dispositivos.DispositivoBridge"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Patrones_Estructurales.Bridge.Ejercicio1_Dispositivos">
+
+    <UserControl.Resources>
+        <!-- Convertidores -->
+        <local:EstadoColorConverter x:Key="EstadoColorConverter"/>
+        <local:EstadoFondoConverter x:Key="EstadoFondoConverter"/>
+
+        <!-- Plantilla para cada tarjeta de dispositivo -->
+        <DataTemplate x:Key="DispositivoCardTemplate">
+            <Border Background="{Binding ColorFondo}"
+                    BorderBrush="{Binding EstiloVisual.ColorBorde}"
+                    BorderThickness="3"
+                    CornerRadius="15"
+                    Padding="15"
+                    MinWidth="250"
+                    MinHeight="280"
+                    Margin="15">
+
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" 
+                                      ShadowDepth="5" 
+                                      Opacity="0.3"/>
+                </Border.Effect>
+
+                <StackPanel>
+                    <TextBlock Text="{Binding Icono}"
+                               FontSize="56"
+                               Foreground="{Binding ColorTexto}"
+                               HorizontalAlignment="Center"
+                               Margin="0,5,0,5"/>
+
+                    <TextBlock Text="{Binding TipoDispositivo}"
+                               FontSize="22"
+                               Foreground="{Binding ColorTexto}"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Margin="0,10,0,0"/>
+
+                    <TextBlock Text="{Binding Nombre}"
+                               FontSize="13"
+                               Foreground="{Binding ColorTexto}"
+                               Opacity="0.8"
+                               HorizontalAlignment="Center"
+                               Margin="0,5,0,10"/>
+
+                    <Border Background="{Binding Encendido, Converter={StaticResource EstadoFondoConverter}}"
+                            CornerRadius="20"
+                            Padding="12,6"
+                            Margin="0,10,0,10">
+                        <TextBlock Text="{Binding EstadoTexto}"
+                                   FontSize="14"
+                                   Foreground="White"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
+                    </Border>
+
+                    <Button Background="{Binding ColorBoton}"
+                            Foreground="{Binding ColorTexto}"
+                            FontWeight="Bold"
+                            FontSize="14"
+                            Padding="15,10"
+                            Margin="0,15,0,5"
+                            Cursor="Hand"
+                            Click="BtnAccion_Click"
+                            Tag="{Binding}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        CornerRadius="25"
+                                        Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <TextBlock Text="ACCIONAR" />
+                    </Button>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <!-- ScrollViewer que abarca TODO -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+        <StackPanel>
+            <!-- Título -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    Padding="20"
+                    CornerRadius="12"
+                    Margin="15">
+                <TextBlock Text="Panel de Control de Dispositivos - Patron Bridge"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource FondoLavanda}"
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+            <!-- Selector de temas -->
+            <Border Background="{StaticResource ColorPrimario}"
+                    BorderBrush="{StaticResource PrimarioSuave}"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Padding="20"
+                    Margin="15">
+
+                <StackPanel>
+                    <TextBlock Text="CAMBIA EL TEMA VISUAL (Bridge en accion)"
+                               Foreground="{StaticResource FondoLavanda}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Margin="0,0,0,15"
+                               HorizontalAlignment="Center"/>
+
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Button Background="{StaticResource TextoOscuro}"
+                                Foreground="{StaticResource FondoLavanda}"
+                                FontWeight="Bold"
+                                FontSize="14"
+                                Padding="25,12"
+                                Margin="8"
+                                Cursor="Hand"
+                                Click="BtnTemaAzul_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock Text="TEMA AZUL" />
+                        </Button>
+
+                        <Button Background="{StaticResource TextoClaro}"
+                                Foreground="{StaticResource FondoLavanda}"
+                                FontWeight="Bold"
+                                FontSize="14"
+                                Padding="25,12"
+                                Margin="8"
+                                Cursor="Hand"
+                                Click="BtnTemaGris_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock Text="TEMA GRIS" />
+                        </Button>
+
+                        <Button Background="Black"
+                                Foreground="{StaticResource FondoLavanda}"
+                                FontWeight="Bold"
+                                FontSize="14"
+                                Padding="25,12"
+                                Margin="8"
+                                Cursor="Hand"
+                                Click="BtnTemaOscuro_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Padding="{TemplateBinding Padding}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <TextBlock Text="TEMA OSCURO" />
+                        </Button>
+                    </WrapPanel>
+
+                    <Border Background="{StaticResource ColorPrimarioHover}"
+                            CornerRadius="8"
+                            Padding="15"
+                            Margin="0,15,0,0">
+                        <TextBlock Foreground="{StaticResource FondoLavanda}"
+                                   FontSize="12"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Opacity="0.9">
+                                Patron Bridge: Los dispositivos NO saben que colores tienen.
+                                Los temas visuales son intercambiables en tiempo real.
+                                Haz clic en los botones de arriba y mira como cambian todas las tarjetas
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Lista de dispositivos -->
+            <ItemsControl x:Name="ListaDispositivos"
+                          ItemsSource="{Binding Dispositivos}"
+                          HorizontalAlignment="Center"
+                          Margin="0,0,0,15">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"
+                                   HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <StaticResource ResourceKey="DispositivoCardTemplate"/>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

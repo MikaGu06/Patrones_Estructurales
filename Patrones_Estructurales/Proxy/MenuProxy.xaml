@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Proxy.MenuProxy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Navbar superior -->
+        <Border Grid.Row="0"
+                
+                Padding="10,5,10,5"
+                CornerRadius="0,0,8,8">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="BtnProxyEjercicio1"
+                        Grid.Column="0"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Control de Acceso"
+                        Click="BtnProxyEjercicio1_Click"
+                        Margin="5,5,5,5"/>
+
+                <Button x:Name="BtnProxyEjercicio2"
+                        Grid.Column="1"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Carga Diferida"
+                        Click="BtnProxyEjercicio2_Click"
+                        Margin="5,5,5,5"/>
+
+                <Button x:Name="BtnProxyEjercicio3"
+                        Grid.Column="2"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Proxy Remoto"
+                        Click="BtnProxyEjercicio3_Click"
+                        Margin="5,5,5,5"/>
+            </Grid>
+        </Border>
+
+        <!-- Área de contenido -->
+        <ContentControl x:Name="ContenidoEjercicio"
+                        Grid.Row="1"
+                        Margin="10"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Patrones_Estructurales.Bridge.MenuBridge"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Navbar superior con los 3 botones -->
+        <Border Grid.Row="0"
+                
+                Padding="10,5,10,5"
+                CornerRadius="0,0,8,8">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="BtnBridgeEjercicio1"
+                        Grid.Column="0"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Dispositivos"
+                        Margin="5,5,5,5" Click="BtnBridgeEjercicio1_Click"/>
+
+                <Button x:Name="BtnBridgeEjercicio2"
+                        Grid.Column="1"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Reproductor"
+                        Margin="5,5,5,5" Click="BtnBridgeEjercicio2_Click"/>
+
+                <Button x:Name="BtnBridgeEjercicio3"
+                        Grid.Column="2"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Content="Visor Figuras"
+                        Margin="5,5,5,5" Click="BtnBridgeEjercicio3_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Área de contenido donde se muestra el ejercicio seleccionado -->
+        <ContentControl x:Name="ContenidoEjercicio"
+                        Grid.Row="1"
+                        Margin="10"/>
+    </Grid>
+</UserControl>

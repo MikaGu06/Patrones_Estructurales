@@ -20,5 +20,17 @@ namespace Patrones_Estructurales
         {
             InitializeComponent();
         }
+
+        private void BtnBridge_Click(object sender, RoutedEventArgs e)
+        {
+            var menuBridge = new Patrones_Estructurales.Bridge.MenuBridge();
+            ContenedorContenido.Content = menuBridge;
+        }
+
+        private void BtnProxy_Click(object sender, RoutedEventArgs e)
+        {
+            var menuProxy = new Patrones_Estructurales.Proxy.MenuProxy();
+            ContenedorContenido.Content = menuProxy;
+        }
     }
 }

@@ -31,10 +31,9 @@
                 <Button x:Name="BtnAdapter"
                         Style="{StaticResource MenuButtonStyle}"
                         Content="Adapter"/>
-
                 <Button x:Name="BtnBridge"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Bridge"/>
+                        Content="Bridge" Click="BtnBridge_Click"/>
 
                 <Button x:Name="BtnComposite"
                         Style="{StaticResource MenuButtonStyle}"
@@ -54,7 +53,7 @@
 
                 <Button x:Name="BtnProxy"
                         Style="{StaticResource MenuButtonStyle}"
-                        Content="Proxy"/>
+                        Content="Proxy" Click="BtnProxy_Click"/>
 
             </StackPanel>
         </Border>
